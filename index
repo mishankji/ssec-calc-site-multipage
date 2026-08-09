@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS Envirocare — Certified E-Waste &amp; Materials Recovery</title>
+<meta name="description" content="Jaipur-based, CPCB-authorised e-waste recycling and materials recovery. Get an instant value estimate for your old electronics, or arrange corporate bulk disposal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1E1C;
+    --paper:#EEEFE9;
+    --paper-dim:#E3E4DC;
+    --panel:#F6F6F1;
+    --copper:#B8703E;
+    --copper-lt:#D68A56;
+    --copper-dim:#8F5730;
+    --steel:#3E5C6B;
+    --recovered:#4C6E52;
+    --line: rgba(27,30,28,0.14);
+    --mono: 'IBM Plex Mono', monospace;
+    --display: 'Archivo Expanded', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper-dim);display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:18px;height:1px;background:var(--copper-dim);}
+  h1,h2,h3{font-family:var(--display);letter-spacing:-0.01em;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(238,239,233,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1180px;margin:0 auto;}
+  .logo{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-0.02em;display:flex;align-items:baseline;gap:6px;}
+  .logo span{color:var(--copper);}
+  .navlinks{display:flex;gap:30px;font-size:14px;font-weight:500;}
+  .navlinks a:hover{color:var(--copper-dim);}
+  .navcta{font-family:var(--mono);font-size:12px;letter-spacing:.06em;background:var(--copper);color:var(--ink);padding:11px 18px;border-radius:2px;text-transform:uppercase;font-weight:600;}
+  .navcta:hover{background:var(--copper-lt);}
+  @media (max-width:860px){.navlinks{display:none;}}
+
+  .hero{padding:64px 0 30px;}
+  .hero h1{font-size:clamp(32px,4.6vw,54px);line-height:1.04;font-weight:800;}
+  .hero h1 em{font-style:normal;color:var(--copper);}
+  .hero p{font-size:16.5px;max-width:60ch;color:#454842;margin-top:16px;}
+
+  .statbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:60px;}
+  .statgrid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat{padding:26px 32px;border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none;}
+  .stat .num{font-family:var(--mono);font-size:28px;font-weight:600;color:var(--copper-dim);}
+  .stat .label{font-size:12.5px;color:#5c5f57;margin-top:4px;}
+  @media (max-width:760px){.statgrid{grid-template-columns:repeat(2,1fr);}.stat{border-left:none;border-top:1px solid var(--line);}.stat:nth-child(1),.stat:nth-child(2){border-top:none;}}
+
+  section{padding:80px 0;}
+  .section-head{max-width:640px;margin-bottom:44px;}
+  .section-head h2{font-size:clamp(26px,3.2vw,38px);margin-top:12px;font-weight:700;}
+  .section-head p{color:#454842;margin-top:12px;font-size:16px;}
+
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .svc-card{background:var(--paper);padding:30px 26px;}
+  .svc-card .tag{font-family:var(--mono);font-size:11px;color:var(--steel);letter-spacing:.08em;}
+  .svc-card h3{font-size:18px;margin-top:10px;font-weight:700;}
+  .svc-card p{font-size:14px;color:#54574f;margin-top:8px;}
+  @media (max-width:900px){.svc-grid{grid-template-columns:1fr;}}
+  .svc-more{margin-top:26px;}
+
+  .cta-final{text-align:center;padding:90px 0;border-top:1px solid var(--line);}
+  .cta-final h2{font-size:clamp(26px,3.6vw,40px);}
+  .cta-final p{color:#454842;margin-top:12px;}
+  .btn-primary{background:var(--ink);color:var(--paper);padding:14px 24px;font-size:14px;font-weight:600;border-radius:2px;display:inline-block;}
+  .btn-primary:hover{background:var(--copper-dim);}
+  .btn-secondary{border:1px solid var(--ink);padding:14px 24px;font-size:14px;font-weight:600;border-radius:2px;display:inline-block;}
+  .btn-secondary:hover{border-color:var(--copper-dim);color:var(--copper-dim);}
+  .hero-actions{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap;}
+  .cta-final .hero-actions{justify-content:center;}
+
+  footer{background:var(--ink);color:#C7C9C1;padding:60px 0 30px;font-size:14px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:30px;}
+  .foot-grid h4{font-family:var(--mono);font-size:12px;color:#8a8d84;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;}
+  .foot-grid a{display:block;color:#C7C9C1;margin-bottom:9px;font-size:13.5px;}
+  .foot-grid a:hover{color:var(--copper-lt);}
+  .foot-bottom{margin-top:46px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:space-between;font-size:12.5px;color:#8a8d84;flex-wrap:wrap;gap:10px;}
+  @media (max-width:900px){.foot-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* ============ VALUE CALCULATOR — retheme of yesterday's build ============ */
+  #calculator{padding-top:20px;padding-bottom:70px;}
+  .ec-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--copper-dim);font-weight:600;background:var(--panel);border:1px solid var(--line);padding:6px 12px;border-radius:2px;margin-bottom:16px;}
+  .ec-eyebrow svg{width:14px;height:14px;flex:none;}
+  .ec-title{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,36px);line-height:1.1;color:var(--ink);margin:0 0 10px;}
+  .ec-title em{font-style:normal;color:var(--copper);}
+  .ec-sub{color:#454842;font-size:15px;max-width:58ch;margin:0 0 32px;}
+
+  .ec-cats{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:26px;}
+  @media (max-width:900px){.ec-cats{grid-template-columns:repeat(4,1fr);}}
+  @media (max-width:560px){.ec-cats{grid-template-columns:repeat(3,1fr);gap:8px;}}
+  .ec-cat{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px 12px;background:var(--panel);border:1px solid var(--line);border-radius:2px;cursor:pointer;font-family:var(--body);font-weight:600;font-size:12px;color:#5c5f57;text-align:center;transition:.15s ease;user-select:none;}
+  .ec-cat:hover{border-color:var(--copper-lt);}
+  .ec-cat svg{width:24px;height:24px;stroke:#5c5f57;transition:stroke .15s ease;}
+  .ec-cat.active{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+  .ec-cat.active svg{stroke:var(--copper-lt);}
+
+  .ec-card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:28px;display:grid;grid-template-columns:1.15fr 1fr;gap:0;}
+  @media (max-width:760px){.ec-card{grid-template-columns:1fr;}}
+  .ec-form-col{padding-right:28px;}
+  @media (max-width:760px){.ec-form-col{padding-right:0;margin-bottom:24px;}}
+  .ec-field{margin-bottom:20px;}
+  .ec-field label{display:block;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;}
+  .ec-select-wrap{position:relative;}
+  select, .ec-input{width:100%;appearance:none;-webkit-appearance:none;background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:12px 40px 12px 14px;font-family:var(--body);font-size:14.5px;font-weight:500;color:var(--ink);cursor:pointer;transition:border-color .15s ease;}
+  select:focus, .ec-input:focus{outline:none;border-color:var(--copper);}
+  .ec-select-wrap::after{content:"";position:absolute;right:14px;top:50%;width:9px;height:9px;border-right:2px solid #5c5f57;border-bottom:2px solid #5c5f57;transform:translateY(-70%) rotate(45deg);pointer-events:none;}
+  .ec-pillrow{display:flex;flex-wrap:wrap;gap:8px;}
+  .ec-pill{padding:9px 14px;border-radius:2px;border:1px solid var(--line);background:var(--paper);font-size:13px;font-weight:600;color:#5c5f57;cursor:pointer;transition:all .15s ease;}
+  .ec-pill:hover{border-color:var(--copper-lt);}
+  .ec-pill.active{background:var(--copper);border-color:var(--copper);color:var(--ink);}
+  .ec-bulk-toggle{display:flex;align-items:flex-start;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:12px 14px;margin-top:4px;cursor:pointer;}
+  .ec-bulk-toggle input{margin-top:3px;accent-color:var(--copper);flex:none;}
+  .ec-bulk-toggle .txt{font-size:12.5px;color:#54574f;}
+  .ec-bulk-toggle .txt b{color:var(--ink);}
+  #qtyField{display:none;}
+
+  .ec-result-col{background:var(--ink);border-radius:3px;padding:26px 24px;color:var(--paper);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
+  .ec-result-col::before{content:"";position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle, rgba(184,112,62,0.3), transparent 70%);}
+  .ec-result-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--copper-lt);font-weight:600;margin-bottom:6px;}
+  .ec-result-price{font-family:var(--display);font-size:clamp(34px,5.6vw,44px);font-weight:800;line-height:1;margin-bottom:4px;}
+  .ec-result-note{font-size:12.5px;color:rgba(238,239,233,0.6);margin-bottom:20px;}
+  .ec-breakdown{border-top:1px solid rgba(238,239,233,0.15);padding-top:14px;margin-top:auto;display:flex;flex-direction:column;gap:7px;}
+  .ec-bd-row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:rgba(238,239,233,0.7);}
+  .ec-bd-row span:last-child{color:var(--paper);font-weight:600;}
+  .ec-cta{margin-top:18px;display:block;text-align:center;background:var(--copper);color:var(--ink);font-weight:700;font-size:14px;padding:13px 18px;border-radius:2px;border:none;cursor:pointer;text-decoration:none;transition:.15s ease;}
+  .ec-cta:hover{background:var(--copper-lt);}
+
+  .ec-pickup{display:none;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px 28px;margin-top:18px;}
+  .ec-pickup.open{display:block;}
+  .ec-pickup h3{font-family:var(--display);font-size:18px;color:var(--ink);margin:0 0 4px;}
+  .ec-pickup p.hint{font-size:13px;color:#54574f;margin:0 0 18px;}
+  .ec-pickup-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+  @media (max-width:560px){.ec-pickup-grid{grid-template-columns:1fr;}}
+  .ec-pickup-grid .full{grid-column:1/-1;}
+  .ec-pickup-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .ec-btn-wa, .ec-btn-call{flex:1;min-width:160px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:2px;font-weight:700;font-size:14px;text-decoration:none;border:1px solid transparent;cursor:pointer;}
+  .ec-btn-wa{background:#25D366;color:#fff;}
+  .ec-btn-wa:hover{background:#20BD5A;}
+  .ec-btn-call{background:var(--paper);color:var(--ink);border-color:var(--ink);}
+  .ec-btn-call:hover{background:var(--paper-dim);}
+  .ec-btn-wa svg, .ec-btn-call svg{width:17px;height:17px;}
+  .ec-fineprint{font-size:11.5px;color:#7c7f77;margin-top:20px;text-align:center;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo">SS<span>·</span>ENVIROCARE</a>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="#calculator" class="navcta">Value Calculator</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">CPCB &amp; SPCB Authorised — Jaipur, Rajasthan</div>
+      <h1>Your old electronics have <em>real recoverable value.</em><br>Find out what, in seconds.</h1>
+      <p>SS Envirocare runs certified collection, dismantling and materials recovery — from a single old fridge to a company-wide IT asset disposal. Get an instant estimate below, or arrange free pickup.</p>
+    </div>
+  </section>
+
+  <section id="calculator">
+    <div class="wrap">
+      <span class="ec-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C7 2 4 6 4 10c0 5 4 9 8 12 4-3 8-7 8-12 0-4-3-8-8-8z"/></svg>
+        Instant Value Estimate
+      </span>
+      <h2 class="ec-title">What's your old device <em>worth</em> today?</h2>
+      <p class="ec-sub">Pick your appliance, brand, age and condition. We check current recovery value and give you a fair estimate in seconds — no sign-up needed.</p>
+
+      <div class="ec-cats" id="catGrid"></div>
+
+      <div class="ec-card">
+        <div class="ec-form-col">
+          <div class="ec-field">
+            <label for="brandSelect">Brand</label>
+            <div class="ec-select-wrap"><select id="brandSelect"></select></div>
+          </div>
+          <div class="ec-field">
+            <label>Age</label>
+            <div class="ec-pillrow" id="agePillRow"></div>
+          </div>
+          <div class="ec-field">
+            <label>Condition</label>
+            <div class="ec-pillrow" id="condPillRow"></div>
+          </div>
+          <div class="ec-field" style="margin-bottom:0;">
+            <label class="ec-bulk-toggle" for="bulkCheck" style="display:flex;">
+              <input type="checkbox" id="bulkCheck">
+              <span class="txt"><b>Bulk / corporate pickup</b> — disposing of 10+ units? Toggle this on and our team will follow up with a custom contract rate.</span>
+            </label>
+            <div class="ec-field" id="qtyField" style="margin-top:12px;margin-bottom:0;">
+              <label for="qtyInput">Approx. quantity</label>
+              <input class="ec-input" type="number" min="1" id="qtyInput" value="10">
+            </div>
+          </div>
+        </div>
+
+        <div class="ec-result-col">
+          <div>
+            <div class="ec-result-label">Estimated value</div>
+            <div class="ec-result-price" id="resultPrice">₹0</div>
+            <div class="ec-result-note" id="resultNote">Select your device to see a live estimate</div>
+          </div>
+          <div>
+            <div class="ec-breakdown">
+              <div class="ec-bd-row"><span>Base rate</span><span id="bdBase">—</span></div>
+              <div class="ec-bd-row"><span>Brand factor</span><span id="bdBrand">—</span></div>
+              <div class="ec-bd-row"><span>Age factor</span><span id="bdAge">—</span></div>
+              <div class="ec-bd-row"><span>Condition factor</span><span id="bdCond">—</span></div>
+            </div>
+            <button class="ec-cta" id="openPickupBtn" type="button">Request Free Pickup →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ec-pickup" id="pickupPanel">
+        <h3>Book your pickup</h3>
+        <p class="hint">Share your details — our team will confirm your slot within 24 hours. Free pickup within Jaipur city limits.</p>
+        <div class="ec-pickup-grid">
+          <div><label style="display:block;font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--ink);margin-bottom:8px;">Full name</label><input class="ec-input" type="text" id="pName" placeholder="Your name"></div>
+          <div><label style="display:block;font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--ink);margin-bottom:8px;">Phone number</label><input class="ec-input" type="tel" id="pPhone" placeholder="10-digit mobile number"></div>
+          <div class="full"><label style="display:block;font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--ink);margin-bottom:8px;">Pincode / area</label><input class="ec-input" type="text" id="pPincode" placeholder="e.g. 302012, Jaipur"></div>
+        </div>
+        <div class="ec-pickup-actions">
+          <a class="ec-btn-wa" id="waBtn" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5a.6.6 0 0 0 0-.5c-.1-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2z"/></svg>
+            Send on WhatsApp
+          </a>
+          <a class="ec-btn-call" id="callBtn" href="tel:+919654463036">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10.1a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.6 2z"/></svg>
+            Call +91 96544 63036
+          </a>
+        </div>
+      </div>
+
+      <p class="ec-fineprint">Estimates are indicative and confirmed after a free physical inspection at pickup.</p>
+    </div>
+  </section>
+
+  <div class="statbar">
+    <div class="wrap statgrid">
+      <div class="stat"><div class="num">6,600 T</div><div class="label">E-waste processed annually</div></div>
+      <div class="stat"><div class="num">100%</div><div class="label">Govt-authorised recycling — never landfill</div></div>
+      <div class="stat"><div class="num">Jaipur</div><div class="label">Largest facility of its kind in the city</div></div>
+      <div class="stat"><div class="num">2 SPCB</div><div class="label">CPCB &amp; State PCB authorised</div></div>
+    </div>
+  </div>
+
+  <section id="services-teaser">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Beyond individual pickups</div>
+        <h2>Full-scale services for businesses.</h2>
+        <p>EPR compliance, corporate bulk disposal, IT asset disposal, data destruction, buybacks and awareness programs — each built to hand you documentation, not just a pickup receipt.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card"><div class="tag">EPR</div><h3>EPR Compliance</h3><p>Documentation and reporting that satisfies Extended Producer Responsibility obligations under CPCB rules.</p></div>
+        <div class="svc-card"><div class="tag">CORPORATE</div><h3>Bulk Corporate Disposal</h3><p>Scheduled multi-site lifting with SLAs and a dedicated account manager for large-volume clients.</p></div>
+        <div class="svc-card"><div class="tag">IT ASSETS</div><h3>IT Asset Disposal</h3><p>Secure decommissioning of laptops, servers and networking equipment, wiped and logged per device.</p></div>
+      </div>
+      <div class="svc-more"><a href="services.html" class="btn-secondary">View all services →</a></div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center;">Get started</div>
+      <h2>Ready to put a number on your e-waste?</h2>
+      <p>Use the calculator above for individual items, or reach out directly for company-wide disposal.</p>
+      <div class="hero-actions">
+        <a href="#calculator" class="btn-primary">Get My Estimate</a>
+        <a href="contact.html" class="btn-secondary">Talk to Our Team</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="color:var(--paper);margin-bottom:14px;">SS<span>·</span>ENVIROCARE</div>
+        <p style="color:#8a8d84;font-size:13.5px;max-width:32ch;">Certified e-waste collection and materials recovery, based in Jaipur, Rajasthan.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="services.html">EPR Compliance</a>
+        <a href="services.html">Corporate Bulk Disposal</a>
+        <a href="services.html">IT Asset Disposal</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+919654463036">+91 96544 63036</a>
+        <a href="mailto:info@ssenvirocare.in">info@ssenvirocare.in</a>
+        <a href="#">E216 (B), RIA Sarna Dungar, Jaipur</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SS Envirocare Private Limited. All rights reserved.</span>
+      <span>CPCB &amp; SPCB Authorised E-Waste Recycler</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const PRICE_CONFIG = {
+  refrigerator: { label:"Refrigerator", icon:"fridge", base:3200,
+    brands:{Samsung:1.15,LG:1.15,Whirlpool:1.05,Godrej:1.05,Bosch:1.10,Panasonic:1.05,Haier:0.95,Other:0.85},
+    age:{"0-2":1.0,"2-5":0.75,"5-8":0.5,"8+":0.3},
+    condition:{working:1.0,"minor-issue":0.7,"not-working":0.4,scrap:0.2} },
+  ac: { label:"Air Conditioner", icon:"ac", base:3800,
+    brands:{Samsung:1.1,LG:1.1,Voltas:1.1,Daikin:1.15,Bosch:1.05,Panasonic:1.05,Haier:0.95,Other:0.85},
+    age:{"0-2":1.0,"2-5":0.75,"5-8":0.5,"8+":0.3},
+    condition:{working:1.0,"minor-issue":0.65,"not-working":0.4,scrap:0.2} },
+  washing_machine: { label:"Washing Machine", icon:"washer", base:2600,
+    brands:{Samsung:1.1,LG:1.15,Whirlpool:1.05,Bosch:1.15,IFB:1.1,Godrej:0.95,Other:0.85},
+    age:{"0-2":1.0,"2-5":0.75,"5-8":0.5,"8+":0.3},
+    condition:{working:1.0,"minor-issue":0.7,"not-working":0.4,scrap:0.2} },
+  tv: { label:"Television", icon:"tv", base:2200,
+    brands:{Samsung:1.15,LG:1.15,Sony:1.2,Panasonic:1.05,Mi:0.95,TCL:0.9,Other:0.8},
+    age:{"0-2":1.0,"2-5":0.7,"5-8":0.45,"8+":0.25},
+    condition:{working:1.0,"minor-issue":0.6,"not-working":0.35,scrap:0.15} },
+  laptop: { label:"Laptop", icon:"laptop", base:4500,
+    brands:{Apple:1.6,Dell:1.05,HP:1.0,Lenovo:1.0,Asus:0.95,Acer:0.85,Other:0.8},
+    age:{"0-2":1.0,"2-5":0.65,"5-8":0.35,"8+":0.15},
+    condition:{working:1.0,"minor-issue":0.65,"not-working":0.3,scrap:0.15} },
+  mobile: { label:"Mobile Phone", icon:"mobile", base:1800,
+    brands:{Apple:1.9,Samsung:1.1,OnePlus:1.05,Xiaomi:0.85,Vivo:0.8,Oppo:0.8,Other:0.7},
+    age:{"0-2":1.0,"2-5":0.6,"5-8":0.3,"8+":0.12},
+    condition:{working:1.0,"minor-issue":0.6,"not-working":0.25,scrap:0.1} },
+  printer: { label:"Printer", icon:"printer", base:900,
+    brands:{HP:1.1,Canon:1.1,Epson:1.05,Brother:1.0,Samsung:0.95,Other:0.85},
+    age:{"0-2":1.0,"2-5":0.7,"5-8":0.45,"8+":0.25},
+    condition:{working:1.0,"minor-issue":0.6,"not-working":0.3,scrap:0.15} }
+};
+
+const ICONS = {
+  fridge:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="1.5"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="8" y1="5" x2="8" y2="6.5"/><line x1="8" y1="12" x2="8" y2="13.5"/></svg>',
+  ac:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="8" rx="1.5"/><line x1="6" y1="17" x2="6" y2="20"/><line x1="12" y1="17" x2="12" y2="20"/><line x1="18" y1="17" x2="18" y2="20"/></svg>',
+  washer:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="2" width="18" height="20" rx="1.5"/><circle cx="12" cy="13" r="5"/><circle cx="12" cy="13" r="1.6"/><line x1="7" y1="5.5" x2="7.01" y2="5.5"/><line x1="10" y1="5.5" x2="10.01" y2="5.5"/></svg>',
+  tv:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="13" rx="1.5"/><line x1="9" y1="21" x2="15" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+  laptop:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="11" rx="1.2"/><path d="M2 18h20l-1.5 2.5a1 1 0 0 1-.9.5H4.4a1 1 0 0 1-.9-.5L2 18z"/></svg>',
+  mobile:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg>',
+  printer:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="8" rx="1.2"/><path d="M6 17v4h12v-4"/></svg>'
+};
+
+const AGE_LABELS = {"0-2":"0–2 yrs","2-5":"2–5 yrs","5-8":"5–8 yrs","8+":"8+ yrs"};
+const COND_LABELS = {working:"Working","minor-issue":"Minor issue","not-working":"Not working",scrap:"Scrap only"};
+
+let state = { category:"refrigerator", brand:null, age:"0-2", condition:"working", bulk:false, qty:10 };
+
+const catGrid = document.getElementById('catGrid');
+Object.keys(PRICE_CONFIG).forEach(key => {
+  const cfg = PRICE_CONFIG[key];
+  const btn = document.createElement('div');
+  btn.className = 'ec-cat' + (key === state.category ? ' active' : '');
+  btn.dataset.cat = key;
+  btn.innerHTML = ICONS[cfg.icon] + '<span>' + cfg.label + '</span>';
+  btn.addEventListener('click', () => { state.category = key; state.brand = null; render(); });
+  catGrid.appendChild(btn);
+});
+
+const brandSelect = document.getElementById('brandSelect');
+brandSelect.addEventListener('change', () => { state.brand = brandSelect.value; compute(); });
+const agePillRow = document.getElementById('agePillRow');
+const condPillRow = document.getElementById('condPillRow');
+const bulkCheck = document.getElementById('bulkCheck');
+const qtyField = document.getElementById('qtyField');
+const qtyInput = document.getElementById('qtyInput');
+bulkCheck.addEventListener('change', () => { state.bulk = bulkCheck.checked; qtyField.style.display = state.bulk ? 'block' : 'none'; compute(); });
+qtyInput.addEventListener('input', () => { state.qty = parseInt(qtyInput.value) || 1; compute(); });
+document.getElementById('openPickupBtn').addEventListener('click', () => {
+  document.getElementById('pickupPanel').classList.add('open');
+  document.getElementById('pickupPanel').scrollIntoView({ behavior:'smooth', block:'start' });
+});
+
+function render(){
+  document.querySelectorAll('.ec-cat').forEach(el => el.classList.toggle('active', el.dataset.cat === state.category));
+  const cfg = PRICE_CONFIG[state.category];
+  brandSelect.innerHTML = '';
+  Object.keys(cfg.brands).forEach(b => { const opt = document.createElement('option'); opt.value = b; opt.textContent = b; brandSelect.appendChild(opt); });
+  state.brand = Object.keys(cfg.brands)[0];
+  brandSelect.value = state.brand;
+  agePillRow.innerHTML = '';
+  Object.keys(cfg.age).forEach(a => { const pill = document.createElement('div'); pill.className = 'ec-pill' + (a === state.age ? ' active' : ''); pill.textContent = AGE_LABELS[a]; pill.addEventListener('click', () => { state.age = a; render(); }); agePillRow.appendChild(pill); });
+  condPillRow.innerHTML = '';
+  Object.keys(cfg.condition).forEach(c => { const pill = document.createElement('div'); pill.className = 'ec-pill' + (c === state.condition ? ' active' : ''); pill.textContent = COND_LABELS[c]; pill.addEventListener('click', () => { state.condition = c; render(); }); condPillRow.appendChild(pill); });
+  compute();
+}
+
+function compute(){
+  const cfg = PRICE_CONFIG[state.category];
+  const brandMult = cfg.brands[state.brand] ?? 1;
+  const ageMult = cfg.age[state.age] ?? 1;
+  const condMult = cfg.condition[state.condition] ?? 1;
+  let price = cfg.base * brandMult * ageMult * condMult;
+  price = Math.round(price / 50) * 50;
+  const qtyMult = state.bulk ? (state.qty || 1) : 1;
+  const totalPrice = price * qtyMult;
+  document.getElementById('resultPrice').textContent = '₹' + totalPrice.toLocaleString('en-IN');
+  document.getElementById('resultNote').textContent = state.bulk ? `Estimated for ${state.qty} unit(s) · corporate rates confirmed on inspection` : `Estimated value for your ${cfg.label.toLowerCase()}`;
+  document.getElementById('bdBase').textContent = '₹' + cfg.base.toLocaleString('en-IN');
+  document.getElementById('bdBrand').textContent = '×' + brandMult.toFixed(2);
+  document.getElementById('bdAge').textContent = '×' + ageMult.toFixed(2);
+  document.getElementById('bdCond').textContent = '×' + condMult.toFixed(2);
+  const waMsg = encodeURIComponent(`Hi SS Envirocare, I'd like to request a pickup.\nDevice: ${cfg.label}\nBrand: ${state.brand}\nAge: ${AGE_LABELS[state.age]}\nCondition: ${COND_LABELS[state.condition]}\n` + (state.bulk ? `Quantity: ${state.qty} units\n` : '') + `Estimated value: ₹${totalPrice.toLocaleString('en-IN')}`);
+  document.getElementById('waBtn').href = `https://wa.me/919654463036?text=${waMsg}`;
+}
+render();
+</script>
+</body>
+</html>
