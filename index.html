@@ -35,14 +35,34 @@
   h1,h2,h3{font-family:var(--display);letter-spacing:-0.01em;}
 
   header{position:sticky;top:0;z-index:50;background:rgba(238,239,233,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1180px;margin:0 auto;}
+  .nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1180px;margin:0 auto;}
   .logo{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-0.02em;display:flex;align-items:baseline;gap:6px;}
   .logo span{color:var(--copper);}
   .navlinks{display:flex;gap:30px;font-size:14px;font-weight:500;}
   .navlinks a:hover{color:var(--copper-dim);}
-  .navcta{font-family:var(--mono);font-size:12px;letter-spacing:.06em;background:var(--copper);color:var(--ink);padding:11px 18px;border-radius:2px;text-transform:uppercase;font-weight:600;}
+  .navcta{font-family:var(--mono);font-size:12px;letter-spacing:.06em;background:var(--copper);color:var(--ink);padding:11px 18px;border-radius:2px;text-transform:uppercase;font-weight:600;white-space:nowrap;}
   .navcta:hover{background:var(--copper-lt);}
-  @media (max-width:860px){.navlinks{display:none;}}
+  .nav-right{display:flex;align-items:center;gap:10px;}
+  .navtoggle{display:none;background:none;border:none;cursor:pointer;padding:6px;flex:none;}
+  .navtoggle svg{width:24px;height:24px;stroke:var(--ink);display:block;}
+  @media (max-width:860px){
+    .navlinks{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:6px 20px 16px;}
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:13px 0;border-top:1px solid var(--line);font-size:15px;}
+    .navlinks a:first-child{border-top:none;}
+    .navtoggle{display:block;}
+  }
+  @media (max-width:480px){
+    .nav{padding:14px 20px;}
+    .navcta{padding:9px 12px;font-size:10.5px;}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 20px;}
+    section{padding:clamp(40px,10vw,56px) 0;}
+    .hero{padding:clamp(32px,8vw,44px) 0 20px;}
+    input, select, textarea{font-size:16px !important;}
+    .ec-card{padding:clamp(14px,4vw,18px);}
+  }
 
   .hero{padding:64px 0 30px;}
   .hero h1{font-size:clamp(32px,4.6vw,54px);line-height:1.04;font-weight:800;}
@@ -51,9 +71,9 @@
 
   .statbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:60px;}
   .statgrid{display:grid;grid-template-columns:repeat(4,1fr);}
-  .stat{padding:26px 32px;border-left:1px solid var(--line);}
+  .stat{padding:26px clamp(18px,4vw,32px);border-left:1px solid var(--line);}
   .stat:first-child{border-left:none;}
-  .stat .num{font-family:var(--mono);font-size:28px;font-weight:600;color:var(--copper-dim);}
+  .stat .num{font-family:var(--mono);font-size:clamp(22px,3vw,28px);font-weight:600;color:var(--copper-dim);}
   .stat .label{font-size:12.5px;color:#5c5f57;margin-top:4px;}
   @media (max-width:760px){.statgrid{grid-template-columns:repeat(2,1fr);}.stat{border-left:none;border-top:1px solid var(--line);}.stat:nth-child(1),.stat:nth-child(2){border-top:none;}}
 
@@ -82,6 +102,7 @@
 
   footer{background:var(--ink);color:#C7C9C1;padding:60px 0 30px;font-size:14px;}
   .foot-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:30px;}
+  @media (max-width:600px){.foot-grid{grid-template-columns:1fr 1fr;}}
   .foot-grid h4{font-family:var(--mono);font-size:12px;color:#8a8d84;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;}
   .foot-grid a{display:block;color:#C7C9C1;margin-bottom:9px;font-size:13.5px;}
   .foot-grid a:hover{color:var(--copper-lt);}
@@ -96,12 +117,12 @@
   .ec-title em{font-style:normal;color:var(--copper);}
   .ec-sub{color:#454842;font-size:15px;max-width:58ch;margin:0 0 32px;}
 
-  .ec-cats{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:26px;}
-  @media (max-width:900px){.ec-cats{grid-template-columns:repeat(4,1fr);}}
-  @media (max-width:560px){.ec-cats{grid-template-columns:repeat(3,1fr);gap:8px;}}
-  .ec-cat{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px 12px;background:var(--panel);border:1px solid var(--line);border-radius:2px;cursor:pointer;font-family:var(--body);font-weight:600;font-size:12px;color:#5c5f57;text-align:center;transition:.15s ease;user-select:none;}
+  /* fluid tile grid: column count derives from available width, not fixed breakpoints,
+     so it scales continuously across any phone/tablet/desktop size */
+  .ec-cats{display:grid;grid-template-columns:repeat(auto-fit, minmax(78px, 1fr));gap:clamp(6px,1.6vw,10px);margin-bottom:26px;}
+  .ec-cat{display:flex;flex-direction:column;align-items:center;gap:clamp(5px,1.2vw,8px);padding:clamp(10px,2.4vw,14px) 4px clamp(9px,2vw,12px);background:var(--panel);border:1px solid var(--line);border-radius:2px;cursor:pointer;font-family:var(--body);font-weight:600;font-size:clamp(10.5px,2.4vw,12px);color:#5c5f57;text-align:center;transition:.15s ease;user-select:none;line-height:1.2;}
   .ec-cat:hover{border-color:var(--copper-lt);}
-  .ec-cat svg{width:24px;height:24px;stroke:#5c5f57;transition:stroke .15s ease;}
+  .ec-cat svg{width:clamp(19px,4.5vw,24px);height:clamp(19px,4.5vw,24px);stroke:#5c5f57;transition:stroke .15s ease;}
   .ec-cat.active{background:var(--ink);border-color:var(--ink);color:var(--paper);}
   .ec-cat.active svg{stroke:var(--copper-lt);}
 
@@ -158,13 +179,18 @@
 <header>
   <div class="nav">
     <a href="index.html" class="logo">SS<span>·</span>ENVIROCARE</a>
-    <nav class="navlinks">
+    <nav class="navlinks" id="navLinks">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <a href="#calculator" class="navcta">Value Calculator</a>
+    <div class="nav-right">
+      <a href="#calculator" class="navcta">Value Calculator</a>
+      <button class="navtoggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -372,6 +398,17 @@ const ICONS = {
 
 const AGE_LABELS = {"0-2":"0–2 yrs","2-5":"2–5 yrs","5-8":"5–8 yrs","8+":"8+ yrs"};
 const COND_LABELS = {working:"Working","minor-issue":"Minor issue","not-working":"Not working",scrap:"Scrap only"};
+
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+}));
 
 let state = { category:"refrigerator", brand:null, age:"0-2", condition:"working", bulk:false, qty:10 };
 
