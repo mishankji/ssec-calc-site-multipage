@@ -26,15 +26,26 @@
   h1,h2,h3{font-family:var(--display);letter-spacing:-0.01em;}
 
   header{position:sticky;top:0;z-index:50;background:rgba(238,239,233,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1180px;margin:0 auto;}
+  .nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1180px;margin:0 auto;}
   .logo{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-0.02em;display:flex;align-items:baseline;gap:6px;}
   .logo span{color:var(--copper);}
   .navlinks{display:flex;gap:30px;font-size:14px;font-weight:500;}
   .navlinks a:hover{color:var(--copper-dim);}
   .navlinks a.active{color:var(--copper-dim);}
-  .navcta{font-family:var(--mono);font-size:12px;letter-spacing:.06em;background:var(--copper);color:var(--ink);padding:11px 18px;border-radius:2px;text-transform:uppercase;font-weight:600;}
+  .navcta{font-family:var(--mono);font-size:12px;letter-spacing:.06em;background:var(--copper);color:var(--ink);padding:11px 18px;border-radius:2px;text-transform:uppercase;font-weight:600;white-space:nowrap;}
   .navcta:hover{background:var(--copper-lt);}
-  @media (max-width:860px){.navlinks{display:none;}}
+  .nav-right{display:flex;align-items:center;gap:10px;}
+  .navtoggle{display:none;background:none;border:none;cursor:pointer;padding:6px;flex:none;}
+  .navtoggle svg{width:24px;height:24px;stroke:var(--ink);display:block;}
+  @media (max-width:860px){
+    .navlinks{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:6px 20px 16px;}
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:13px 0;border-top:1px solid var(--line);font-size:15px;}
+    .navlinks a:first-child{border-top:none;}
+    .navtoggle{display:block;}
+  }
+  @media (max-width:480px){.nav{padding:14px 20px;}.navcta{padding:9px 12px;font-size:10.5px;}}
+  @media (max-width:600px){.wrap{padding:0 20px;}section{padding:clamp(40px,10vw,56px) 0;}.pagehero{padding:clamp(32px,8vw,44px) 0 20px;}}
 
   .pagehero{padding:64px 0 40px;}
   .pagehero h1{font-size:clamp(32px,4.6vw,50px);font-weight:800;max-width:16ch;}
@@ -56,17 +67,15 @@
   .vm-card p{font-size:15.5px;margin-top:12px;color:#3a3d38;}
   @media (max-width:760px){.vm-grid{grid-template-columns:1fr;}}
 
-  .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
-  .value-card{background:var(--paper);padding:26px 22px;}
+  .values-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);}
+  .value-card{background:var(--paper);padding:clamp(20px,4vw,26px) clamp(16px,4vw,22px);}
   .value-card .icon{font-size:22px;}
   .value-card h3{font-size:16px;margin-top:12px;font-weight:700;}
   .value-card p{font-size:13.5px;color:#54574f;margin-top:8px;}
-  @media (max-width:860px){.values-grid{grid-template-columns:repeat(2,1fr);}}
 
-  .cert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-  .cert-chip{border:1px solid var(--line);padding:20px 14px;text-align:center;font-family:var(--mono);font-size:12.5px;color:var(--steel);font-weight:600;background:var(--panel);}
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(130px,1fr));gap:clamp(8px,2vw,14px);}
+  .cert-chip{border:1px solid var(--line);padding:clamp(14px,3vw,20px) 12px;text-align:center;font-family:var(--mono);font-size:clamp(11px,2.4vw,12.5px);color:var(--steel);font-weight:600;background:var(--panel);}
   .cert-chip.done{color:var(--recovered);}
-  @media (max-width:760px){.cert-grid{grid-template-columns:repeat(2,1fr);}}
 
   .process-list{display:flex;flex-direction:column;}
   .process-item{display:grid;grid-template-columns:100px 1fr;padding:24px 0;border-top:1px solid var(--line);gap:24px;}
@@ -74,11 +83,11 @@
   .process-item .pnum{font-family:var(--mono);font-size:13px;color:var(--copper-dim);padding-top:4px;}
   .process-item h3{font-size:17px;font-weight:700;}
   .process-item p{font-size:14.5px;color:#54574f;margin-top:6px;max-width:60ch;}
+  @media (max-width:480px){.process-item{grid-template-columns:1fr;gap:6px;}.process-item .pnum{padding-top:0;}}
 
-  .client-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;align-items:center;}
+  .client-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(90px,1fr));gap:clamp(14px,3vw,18px);align-items:center;}
   .client-grid img{filter:grayscale(1);opacity:.75;transition:.2s ease;object-fit:contain;max-height:44px;margin:0 auto;}
   .client-grid img:hover{filter:none;opacity:1;}
-  @media (max-width:760px){.client-grid{grid-template-columns:repeat(3,1fr);}}
 
   .cta-final{text-align:center;padding:90px 0;border-top:1px solid var(--line);}
   .cta-final h2{font-size:clamp(26px,3.6vw,40px);}
@@ -91,6 +100,7 @@
 
   footer{background:var(--ink);color:#C7C9C1;padding:60px 0 30px;font-size:14px;}
   .foot-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:30px;}
+  @media (max-width:600px){.foot-grid{grid-template-columns:1fr 1fr;}}
   .foot-grid h4{font-family:var(--mono);font-size:12px;color:#8a8d84;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;}
   .foot-grid a{display:block;color:#C7C9C1;margin-bottom:9px;font-size:13.5px;}
   .foot-grid a:hover{color:var(--copper-lt);}
@@ -103,13 +113,18 @@
 <header>
   <div class="nav">
     <a href="index.html" class="logo">SS<span>·</span>ENVIROCARE</a>
-    <nav class="navlinks">
+    <nav class="navlinks" id="navLinks">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html" class="active">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <a href="index.html#calculator" class="navcta">Value Calculator</a>
+    <div class="nav-right">
+      <a href="index.html#calculator" class="navcta">Value Calculator</a>
+      <button class="navtoggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -269,6 +284,19 @@
     </div>
   </div>
 </footer>
+
+<script>
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+}));
+</script>
 
 </body>
 </html>
